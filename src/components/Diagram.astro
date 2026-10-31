@@ -1,0 +1,90 @@
+---
+import {icon, draw, tint, flow, link, label, box, jag, sine} from '../sketch';
+const {kind = 'resqnet', label: aria} = Astro.props;
+const slices = (x: number, y: number, who: string) => [...who].map((c, n) => {
+ const d = `M${x + n * 34} ${y}c7-1.5 15-1.5 22 0 1.4 7 1.4 15 0 22-7 1.4-15 1.4-22 0-1.4-7-1.4-15 0-22z`;
+ return (c === 'a' ? tint(d) : `<path class="hatch" d="${d}"/>`) + draw(d);
+}).join('');
+const art: Record<string, string> = {
+resqnet: [
+ icon('towerOff', 256, 6, 1.35),
+ label(288, 92, 'no tower, no server'),
+ tint('M28 60c14-12 62-14 82-2 9 9 5 24-9 28-12 3-28 3-40 1l-17 13 4-15c-14-5-27-17-20-25z', 'hot'),
+ draw('M28 60c14-12 62-14 82-2 9 9 5 24-9 28-12 3-28 3-40 1l-17 13 4-15c-14-5-27-17-20-25z'),
+ label(69, 82, 'SOS', 'mono strong'),
+ icon('phone', 34, 118, 1.8), icon('phone', 248, 156, 1.8), icon('phone', 458, 118, 1.8),
+ flow('M126 168c38-44 86-38 120 6'), label(186, 132, 'hop 1'),
+ flow('M342 210c36-46 84-60 120-30'), label(404, 160, 'hop 2'),
+ label(77, 222, 'sends SOS'),
+ label(291, 262, 'seen this id?'), label(291, 284, 'yes, drop it', 'hot'),
+ label(502, 222, 'new id?'), label(502, 244, 'store + forward', 'hot'),
+ label(30, 345, 'ttl', 'mono', 'start'),
+ ...Array.from({length: 10}, (_, n) => (n < 7 ? tint(box(70 + n * 28, 330, 20, 20)) : '') + draw(box(70 + n * 28, 330, 20, 20))),
+ label(366, 346, '10 hops, then it stops', '', 'start')
+].join(''),
+'trading-lab': [
+ icon('chart', 22, 24, 1.55), label(59, 126, 'daily prices'),
+ flow('M106 62c18-6 34-6 50 0'),
+ icon('spark', 170, 24, 1.55), label(207, 126, 'signal at close'),
+ flow('M256 62c18-6 34-6 50 0'),
+ icon('clock', 320, 24, 1.55), label(357, 126, 'wait for next open'),
+ flow('M406 62c18-6 34-6 50 0'),
+ icon('coin', 470, 24, 1.55), label(507, 126, '−0.10% per trade', 'hot'),
+ flow('M508 140c4 18 2 30-4 46'),
+ tint(box(410, 196, 170, 58)), draw(box(410, 196, 170, 58)), label(495, 231, 'rule, after costs'),
+ draw(box(22, 196, 170, 58)), label(107, 231, 'buy and hold'),
+ icon('scale', 262, 188, 1.6),
+ flow('M404 226c-14 0-26 0-36 0'), flow('M198 226c12 0 22 0 34 0'),
+ flow('M300 272c0 10 0 18 0 30'),
+ draw(box(170, 310, 260, 50)), label(300, 341, 'does it beat holding?', 'strong'),
+ icon('star', 446, 304, .7)
+].join(''),
+'pancreatic-ct': [
+ label(150, 30, 'split by slice'), label(450, 30, 'split by patient'),
+ draw(box(20, 46, 260, 92)), draw(box(320, 46, 260, 92)),
+ label(36, 68, 'train', 'mono', 'start'), label(336, 68, 'train', 'mono', 'start'),
+ slices(38, 84, 'abaabba'), slices(338, 84, 'aaaaaaa'),
+ draw(box(20, 156, 260, 92)), draw(box(320, 156, 260, 92)),
+ label(36, 178, 'test', 'mono', 'start'), label(336, 178, 'test', 'mono', 'start'),
+ slices(38, 194, 'babab'), slices(338, 194, 'bbbbb'),
+ draw('M118 268c10 10 20 20 30 30', 'hot-ink'), draw('M148 268c-10 10-20 20-30 30', 'hot-ink'),
+ label(150, 326, 'same person on both sides'),
+ draw('M432 284c5 5 9 10 12 14 8-14 18-26 30-36', 'hot-ink'),
+ label(450, 326, 'every test patient is new'),
+ tint('M38 346c5-1 11-1 16 0 1 5 1 11 0 16-5 1-11 1-16 0-1-5-1-11 0-16z'), draw('M38 346c5-1 11-1 16 0 1 5 1 11 0 16-5 1-11 1-16 0-1-5-1-11 0-16z'), label(62, 360, 'patient A', 'mono', 'start'),
+ '<path class="hatch" d="M170 346c5-1 11-1 16 0 1 5 1 11 0 16-5 1-11 1-16 0-1-5-1-11 0-16z"/>', draw('M170 346c5-1 11-1 16 0 1 5 1 11 0 16-5 1-11 1-16 0-1-5-1-11 0-16z'), label(194, 360, 'patient B', 'mono', 'start'),
+ label(580, 360, 'MD5 drops exact duplicates', 'mono', 'end')
+].join(''),
+eeg: [
+ label(22, 64, 'raw', 'mono', 'start'), draw(jag(66, 330, 58, 7)), label(346, 64, 'blinks, drift, noise', '', 'start'),
+ flow('M86 92c0 14 0 26 0 40'), icon('funnel', 100, 92, .8), label(146, 120, '0.5 to 45 Hz, then ICA', '', 'start'),
+ label(22, 172, 'clean', 'mono', 'start'), draw(sine(72, 330, 166, 9, 32)),
+ flow('M86 192c0 12 0 22 0 34'), label(104, 214, '2 s epochs, 512 samples', '', 'start'),
+ ...Array.from({length: 6}, (_, n) => draw(box(66 + n * 46, 236, 40, 30)) + label(86 + n * 46, 256, '2s', 'mono')),
+ flow('M86 276c0 12 0 20 0 30'),
+ label(66, 336, 'δ θ α β γ', 'mono strong', 'start'), label(66, 358, 'Hjorth · entropy · Hurst', 'mono', 'start'),
+ flow('M262 338c14 0 22 0 34 0'),
+ ...['LR', 'RF', 'SVM', 'MLP'].map((m, n) => (m === 'MLP' ? tint(box(306 + n * 68, 318, 58, 38)) : '') + draw(box(306 + n * 68, 318, 58, 38)) + label(335 + n * 68, 343, m, 'mono')),
+ icon('person', 398, 132, .9), icon('person', 450, 132, .9), icon('person', 502, 132, .9),
+ label(420, 196, 'train', 'mono'), label(472, 196, 'val', 'mono'), label(524, 196, 'test', 'mono'),
+ label(472, 226, 'split by subject, 70/15/15', 'hot')
+].join(''),
+logstonedb: [
+ icon('crown', 160, 4, .9),
+ icon('server', 144, 34, 1.6), label(262, 64, 'leader', 'hot', 'start'),
+ icon('server', 40, 200, 1.6), icon('server', 248, 200, 1.6),
+ flow('M168 116c-24 24-50 50-70 78'), flow('M218 116c22 24 44 50 64 78'),
+ label(92, 150, 'append'), label(296, 150, 'append'),
+ link('M122 242c40-8 84-8 124 0'),
+ label(184, 316, 'three nodes, one Raft log'),
+ icon('dice', 430, 18, 1.3), label(500, 52, 'seed = 42', 'mono', 'start'),
+ flow('M461 86c2 16 2 28 0 46'),
+ tint(box(370, 142, 182, 64)), draw(box(370, 142, 182, 64)), label(461, 180, 'sim(seed)', 'mono strong'),
+ flow('M366 176c-14 4-28 10-42 22'),
+ flow('M404 214c-20 54 130 54 112 0'),
+ label(461, 300, 'same messages, same timeouts'),
+ label(461, 326, 'same failure, replayed exactly', 'hot')
+].join('')
+};
+---
+<figure class={`sketch sketch-${kind}`} role="img" aria-label={aria ?? `Diagram for ${kind}`}><svg viewBox="0 0 600 380" class="sk" aria-hidden="true"><g class="art" set:html={art[kind]} /></svg></figure>

@@ -1,0 +1,35 @@
+---
+import Base from './Base.astro';
+import Diagram from '../components/Diagram.astro';
+import Skills from '../components/Skills.astro';
+import Experience from '../components/Experience.astro';
+import {projects} from '../content';
+const { frontmatter, headings = [] } = Astro.props;
+const path = Astro.url.pathname.replace(/\/$/, '');
+const at = projects.findIndex(p => p.slug === frontmatter.project);
+const project = projects[at];
+const next = at >= 0 ? projects[(at + 1) % projects.length] : null;
+const toc = headings.filter((h: {depth: number}) => h.depth === 2);
+---
+<Base title={frontmatter.title} description={frontmatter.description}>
+{project && <div class="progress" aria-hidden="true"></div>}
+<div class:list={['article-shell','wrap', { 'case-study': project }]}>
+ {project && <header class="case-head">
+  <a class="back-link" href="/projects" data-cursor="back"><span aria-hidden="true">←</span> All projects</a>
+  <div class="case-meta"><span class="deva">{['०१','०२','०३','०४','०५'][at]}</span><span>{project.status}</span><span>{project.when}</span><ul class="tags">{project.stack.map((s: string) => <li>{s}</li>)}</ul></div>
+ </header>}
+ {project && <aside class="case-aside">
+  <Diagram kind={project.slug} label={project.caption} />
+  <p class="cap">{frontmatter.caption}</p>
+  {toc.length > 0 && <nav class="toc" aria-label="On this page"><p>On this page</p><ol>{toc.map((h: {slug: string, text: string}) => <li><a href={`#${h.slug}`} data-toc={h.slug}>{h.text}</a></li>)}</ol></nav>}
+ </aside>}
+ <article class="prose" data-prose><slot /></article>
+</div>
+{path === '/about' && <>
+ <section class="exp-section wrap" aria-labelledby="exp-h"><div class="section-head"><p class="eyebrow"><span class="deva">०१</span></p><h2 id="exp-h" data-split>My experience</h2></div><Experience /></section>
+ <section class="skills-section" aria-labelledby="skills-h"><div class="wrap"><div class="section-head split-head"><p class="eyebrow"><span class="deva">०२</span></p><h2 id="skills-h" data-split>My tech stack</h2><p class="section-note">These are the languages and tools I use most. They change from project to project.</p></div><Skills /></div></section>
+</>}
+{next && <a class="next-case" href={`/projects/${next.slug}`} data-cursor="next">
+ <span class="wrap next-inner"><span class="eyebrow">Next case study</span><span class="next-name">{next.name}<span aria-hidden="true"> →</span></span><span class="next-q">{next.question}</span></span>
+</a>}
+</Base>

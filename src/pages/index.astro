@@ -1,0 +1,129 @@
+---
+import Base from '../layouts/Base.astro';
+import Diagram from '../components/Diagram.astro';
+import Skills from '../components/Skills.astro';
+import Experience from '../components/Experience.astro';
+import {home, projects, studying} from '../content';
+import {icon, draw, tint, flow, label} from '../sketch';
+const bubble = 'M214 300c-6-42 40-74 104-76 66-2 116 26 112 74-4 46-52 74-112 72-60-2-100-28-104-70z';
+const blob = (x: number, y: number, r: number) => `M${x - r} ${y}c0-${r * .6} ${r * .4}-${r} ${r}-${r}s${r * 1.04} ${r * .5} ${r} ${r}-${r * .5} ${r * .96}-${r} ${r}-${r}-${r * .44}-${r}-${r}z`;
+const intro = home.split('# Aaditya Adhikari\n\n')[1].split('\n\n')[0];
+const mini: Record<string, string> = {resqnet:'phone', 'trading-lab':'chart', 'pancreatic-ct':'scan', eeg:'wave', logstonedb:'db'};
+const deva = ['०१','०२','०३','०४','०५','०६','०७','०८'];
+const mapCore = [
+ tint(bubble, 'hot'), draw(bubble),
+ label(320, 284, 'does it', 'big'), label(320, 318, 'hold up?', 'big'),
+ icon('star', 560, 250, .6), icon('star', 40, 280, .45), icon('star', 596, 520, .5),
+ label(312, 44, 'tap a sketch', 'hot', 'start'),
+ draw('M302 36c-40-6-74 4-96 28', 'hot-ink'), draw('M204 50l1 15 14-3', 'hot-ink')
+].join('');
+const mapNodes = [
+ {slug:'resqnet', ic:'phone', x:72, y:66, q:'no network', c:'M196 120c40 20 70 60 84 106'},
+ {slug:'trading-lab', ic:'chart', x:452, y:70, q:'costs on every trade', c:'M444 120c-40 20-70 60-84 104'},
+ {slug:'eeg', ic:'wave', x:60, y:380, q:'split by subject', c:'M150 410c30-16 50-34 70-50'},
+ {slug:'pancreatic-ct', ic:'scan', x:470, y:378, q:'unseen patients', c:'M462 410c-26-16-42-30-56-48'},
+ {slug:'logstonedb', ic:'db', x:280, y:436, q:'replay any failure', c:'M321 428c0-18 0-30 0-46'}
+].map(m => {
+ const p = projects.find(x => x.slug === m.slug)!;
+ return {...m, name: p.name, art: flow(m.c) + tint(blob(m.x + 40, m.y + 40, 52)) + icon(m.ic, m.x, m.y, 1.7) + label(m.x + 40, m.y + 118, p.name, 'name') + label(m.x + 40, m.y + 142, m.q, 'mono')};
+});
+const squiggle = '<svg class="draw" viewBox="0 0 120 12" preserveAspectRatio="none" fill="none" aria-hidden="true"><path d="M2 7C12 1 20 1 30 6s18 6 28 1 18-6 28-1 18 6 32-1" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" vector-effect="non-scaling-stroke" pathLength="1"/></svg>';
+---
+<Base>
+<section class="hero wrap" aria-labelledby="hero-title">
+ <div class="hero-main">
+  <p class="hero-hi hand" aria-hidden="true">नमस्ते, hello</p>
+  <h1 id="hero-title" class="hero-title">
+   <span class="line"><span style="--i:0">Hi, I'm <span class="serif">Aaditya</span>.</span></span>
+   <span class="line"><span style="--i:1">I build software</span></span>
+   <span class="line"><span style="--i:2">and check that its</span></span>
+   <span class="line"><span style="--i:3">results <span class="scribble">hold up<Fragment set:html={squiggle} /></span>.</span></span>
+  </h1>
+  <div class="hero-copy">
+   <p class="hero-intro">{intro}</p>
+   <div class="hero-links">
+    <a class="pill" href="/projects" data-magnetic data-cursor="explore">See my work <span aria-hidden="true">→</span></a>
+    <a class="link-u" href="/about">Read about me</a>
+   </div>
+  </div>
+ </div>
+ <div class="hero-board">
+  <nav class="hero-map" aria-label="Projects">
+   <svg viewBox="0 0 640 600" class="sk">
+    <defs><pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse"><path d="M24 0H0v24" fill="none" class="gridline"/></pattern></defs>
+    <rect width="640" height="600" fill="url(#grid)" class="grid-bg"/>
+    <g class="art" set:html={mapCore} />
+    {mapNodes.map((m, n) => <a href={`/projects/${m.slug}`} class="map-node" style={`--n:${n}`} aria-label={`${m.name}: ${m.q}`} data-cursor="open"><g class="art" set:html={m.art} /></a>)}
+   </svg>
+  </nav>
+  <a class="hero-card" href="/projects/logstonedb" data-cursor="read">
+   <span class="hero-card-tag hand">right now</span>
+   <p>I am building LogstoneDB, a small database in Go. I am starting with a simulator, so that every failure can be replayed exactly.</p>
+   <span class="hero-card-foot">Read the project note <span aria-hidden="true">↗</span></span>
+  </a>
+ </div>
+</section>
+
+<section class="how wrap" aria-labelledby="how-h">
+ <h2 id="how-h"><span class="deva" aria-hidden="true">{deva[0]}</span>How I work</h2>
+ <div class="how-text">
+  <p data-reveal>Before I trust a result, I try to <span class="scribble">break<Fragment set:html={squiggle} /></span> the conditions it depends on.</p>
+  <p data-reveal style="--d:90ms">With <a href="/projects/resqnet">ResQNet</a>, I asked what an emergency app can still do when <span class="serif">the network is gone</span>.</p>
+  <p data-reveal style="--d:180ms">With <a href="/projects/trading-lab">Trading Lab</a>, I test whether a trading rule still beats holding once <span class="serif">every trade pays a cost</span>.</p>
+  <p data-reveal style="--d:270ms">With my <a href="/projects/pancreatic-ct">medical imaging research</a>, I check that the model is tested on <span class="serif">people it has never seen</span>.</p>
+ </div>
+</section>
+
+<section class="work" aria-labelledby="work-h">
+ <div class="wrap section-head split-head">
+  <p class="eyebrow"><span class="deva">{deva[1]}</span></p>
+  <h2 id="work-h" data-split>Selected work</h2>
+  <p class="section-note">These are five projects I have built or researched. Each one has a full write-up that explains how it works and what is still unfinished.</p>
+ </div>
+ <div class="stack wrap">
+  {projects.map((p, n) => <article class={`card card-${n}`} style={`--n:${n}`}>
+   <div class="card-top"><span class="card-ic" aria-hidden="true" set:html={`<svg viewBox="0 0 48 48" class="sk mini">${icon(mini[p.slug], 0, 0, 1)}</svg>`} /><span class="deva">{deva[n]}</span><span>{p.status}</span><span>{p.when}</span></div>
+   <div class="card-body">
+    <div class="card-copy">
+     <h3><a href={`/projects/${p.slug}`} data-cursor="read">{p.name}</a></h3>
+     <p class="card-q">{p.question}</p>
+     <p class="card-sum">{p.summary}</p>
+     <ul class="tags">{p.stack.map(s => <li>{s}</li>)}</ul>
+     <a class="link-u" href={`/projects/${p.slug}`}>Read the full {p.slug === 'logstonedb' ? 'project note' : 'case study'}</a>
+    </div>
+    <div class="card-art"><span class="card-note hand" aria-hidden="true">how it works</span><Diagram kind={p.slug} label={p.caption} /><p class="cap">{p.caption}</p></div>
+   </div>
+  </article>)}
+ </div>
+</section>
+
+<section class="exp-section wrap" aria-labelledby="exp-h">
+ <div class="section-head">
+  <p class="eyebrow"><span class="deva">{deva[2]}</span></p>
+  <h2 id="exp-h" data-split>My experience</h2>
+ </div>
+ <Experience />
+</section>
+
+<section class="skills-section" aria-labelledby="skills-h">
+ <div class="wrap">
+  <div class="section-head split-head">
+   <p class="eyebrow"><span class="deva">{deva[3]}</span></p>
+   <h2 id="skills-h" data-split>My tech stack</h2>
+   <p class="section-note">These are the languages and tools I use most. They change from project to project.</p>
+  </div>
+  <Skills />
+ </div>
+</section>
+
+<section class="now wrap" aria-labelledby="now-h">
+ <div class="section-head">
+  <p class="eyebrow"><span class="deva">{deva[4]}</span></p>
+  <h2 id="now-h" data-split>Things I am studying right now</h2>
+ </div>
+ <div class="terminal" data-reveal>
+  <div class="terminal-bar"><span></span><span></span><span></span><p>~/aaditya/studying.txt</p></div>
+  <ol>{studying.map((x, n) => <li style={`--d:${n * 120}ms`}><span class="prompt">$</span><span class="tag">{x.tag}</span><span>{x.text}</span></li>)}<li class="cursor-line"><span class="prompt">$</span><span class="caret" aria-hidden="true">▌</span></li></ol>
+ </div>
+</section>
+</Base>

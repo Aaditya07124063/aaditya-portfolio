@@ -1,0 +1,14 @@
+---
+import {experience} from '../content';
+---
+<ol class="timeline">
+ {experience.map((e, n) => <li data-reveal style={`--d:${n * 60}ms`}>
+  <span class="t-when">{e.when}</span>
+  <span class="t-node" aria-hidden="true">◆</span>
+  <div class="t-body">
+   <h3>{e.href ? <a href={e.href} data-cursor="read">{e.role}<span aria-hidden="true"> ↗</span></a> : e.role}</h3>
+   <p class="t-kind">{e.kind}</p>
+   <p>{e.text}</p>
+  </div>
+ </li>)}
+</ol>

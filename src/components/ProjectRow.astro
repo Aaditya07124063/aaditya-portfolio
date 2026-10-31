@@ -1,0 +1,14 @@
+---
+const {project, index} = Astro.props;
+const deva = ['०१','०२','०३','०४','०५'];
+---
+<li class="index-row" data-reveal data-preview={project.slug}>
+ <a href={`/projects/${project.slug}`} data-cursor="open">
+  <span class="deva">{deva[index]}</span>
+  <span class="index-name">{project.name}</span>
+  <span class="index-status">{project.status}</span>
+  <span class="index-when">{project.when}</span>
+  <span class="index-arrow" aria-hidden="true">→</span>
+ </a>
+ <p class="index-sum">{project.summary}</p>
+</li>

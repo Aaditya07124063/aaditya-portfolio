@@ -1,0 +1,77 @@
+---
+import '../styles/global.css';
+import {projects} from '../content';
+const { title = 'Aaditya Adhikari · Software and research', description = 'Software and applied research by Aaditya Adhikari, including offline communication, quantitative evaluation, and biomedical machine learning.' } = Astro.props;
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+const nav = [{label:'Work',href:'/projects'}, {label:'About',href:'/about'}, {label:'Contact',href:'/contact'}];
+const current = (href: string) => path === href || (href === '/projects' && path.startsWith('/projects/')) ? 'page' : undefined;
+const year = new Date().getFullYear();
+---
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>{title}</title><meta name="description" content={description} />
+<meta name="robots" content="noindex, nofollow" />
+<meta name="theme-color" content="#f2ece1" />
+<meta property="og:title" content={title} /><meta property="og:description" content={description} /><meta property="og:type" content="website" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="preload" href="/fonts/GoogleSansFlex.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="/fonts/Coconat.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Tiro+Devanagari+Hindi&display=swap" />
+<script is:inline>
+(function(){var d=document.documentElement;d.classList.add('js');try{if(sessionStorage.getItem('aa-seen'))d.classList.add('seen')}catch(e){}if(matchMedia('(prefers-reduced-motion: reduce)').matches)d.classList.add('seen')})();
+</script>
+</head>
+<body>
+<svg class="sr" aria-hidden="true" focusable="false"><defs><filter id="rough" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency=".035" numOctaves="2" seed="4"/><feDisplacementMap in="SourceGraphic" scale="2.6"/></filter><marker id="ah" viewBox="0 0 12 12" refX="9" refY="6" markerWidth="9" markerHeight="9" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M2 2c3 1.5 5 3 8 4-3 1-5 2.5-8 4" fill="none" stroke="context-stroke" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker></defs></svg>
+<a class="skip" href="#main">Skip to content</a>
+<div class="loader" aria-hidden="true">
+ <div class="loader-inner">
+  <span class="loader-deva">नमस्ते</span>
+  <span class="loader-bar"><span data-loader-bar>░░░░░░░░░░░░░░░░░░░░</span></span>
+  <span class="loader-count"><span data-loader-count>000</span><small>/100</small></span>
+ </div>
+ <span class="loader-foot">aaditya adhikari · software and research</span>
+</div>
+<div class="cursor" aria-hidden="true"><span class="cursor-dot"></span><span class="cursor-ring"><span data-cursor-label></span></span></div>
+<div class="grain" aria-hidden="true"></div>
+
+<header class="site-header">
+ <a class="wordmark" href="/" aria-label="Aaditya Adhikari, home"><span class="mark" aria-hidden="true">अ</span><span class="wordmark-text"><span>Aaditya Adhikari</span><small>software · research</small></span></a>
+ <nav class="nav" aria-label="Main navigation">{nav.map(({label,href}, n) => <a href={href} aria-current={current(href)} class="roll"><sup>0{n+1}</sup><span class="r"><span>{label}</span></span></a>)}</nav>
+ <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu" data-menu-toggle><span class="menu-lines" aria-hidden="true"></span><span class="sr">Open menu</span></button>
+</header>
+<div class="menu" id="menu" data-menu>
+ <nav aria-label="Mobile navigation">{[{label:'Home',href:'/'},...nav].map(({label,href}, n) => <a href={href} aria-current={path === href ? 'page' : current(href)} style={`--n:${n}`}><span class="deva">{['०१','०२','०३','०४'][n]}</span>{label}</a>)}</nav>
+ <p class="menu-note">github.com/Aaditya07124063</p>
+</div>
+
+<main id="main" tabindex="-1"><slot /></main>
+
+<footer class="site-footer">
+ <div class="footer-cta wrap">
+  <h2 class="footer-big" data-split>Did you find this interesting?</h2>
+  <p class="footer-lede">If you want to talk about any of these projects, or about something you are working on, please contact me. I would be glad to hear from you.</p>
+  <div class="footer-cta-row">
+   <a class="pill pill-light" href="/contact" data-magnetic data-cursor="say hi">Contact me <span aria-hidden="true">→</span></a>
+   <a class="pill pill-ghost" href="https://github.com/Aaditya07124063" data-magnetic data-cursor="code">GitHub <span aria-hidden="true">↗</span></a>
+  </div>
+ </div>
+ <pre class="wave" aria-hidden="true" data-wave></pre>
+ <div class="footer-grid wrap">
+  <div><h3>Pages</h3><ul><li><a href="/" class="roll"><span class="r"><span>Home</span></span></a></li><li><a href="/projects" class="roll"><span class="r"><span>Work</span></span></a></li><li><a href="/about" class="roll"><span class="r"><span>About</span></span></a></li><li><a href="/contact" class="roll"><span class="r"><span>Contact</span></span></a></li><li><a href="/writing" class="roll"><span class="r"><span>Writing</span></span></a></li></ul></div>
+  <div><h3>Case studies</h3><ul>{projects.map(p => <li><a href={`/projects/${p.slug}`} class="roll"><span class="r"><span>{p.name}</span></span></a></li>)}</ul></div>
+  <div><h3>Elsewhere</h3><ul><li><a href="https://github.com/Aaditya07124063" class="roll"><span class="r"><span>GitHub ↗</span></span></a></li></ul></div>
+ </div>
+ <div class="footer-word wrap" aria-hidden="true">{[...'Aaditya'].map((c, n) => <span style={`--n:${n}`}>{c}</span>)}<span class="footer-dot">.</span></div>
+ <div class="footer-bottom wrap">
+  <small>© {year} Aaditya Adhikari</small>
+  <small class="deva-line"><span class="deva">धन्यवाद</span> Thank you for reading.</small>
+  <button type="button" class="to-top" data-to-top data-cursor="up">Back to top <span aria-hidden="true">↑</span></button>
+ </div>
+</footer>
+<script>import '../scripts/site.ts';</script>
+</body>
+</html>

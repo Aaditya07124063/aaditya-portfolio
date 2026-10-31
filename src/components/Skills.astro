@@ -1,0 +1,9 @@
+---
+import {skills} from '../content';
+---
+<div class="skills">
+ {skills.map((g, n) => <div class="skill-row" data-reveal style={`--d:${n * 70}ms`}>
+  <h3><span class="mono">{String(n + 1).padStart(2, '0')}</span>{g.group}</h3>
+  <ul>{g.items.map(s => <li><span class="key">{s}</span></li>)}</ul>
+ </div>)}
+</div>

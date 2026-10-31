@@ -1,0 +1,22 @@
+---
+import Base from '../../layouts/Base.astro';
+import ProjectRow from '../../components/ProjectRow.astro';
+import Diagram from '../../components/Diagram.astro';
+import {projects,publicCopy} from '../../content';
+const intro=publicCopy('pages/projects').split('# Work\n\n')[1].split('\n\n')[0];
+---
+<Base title="Work · Aaditya Adhikari" description="Explore the methods, decisions, and limitations behind Aaditya Adhikari's software projects and research studies.">
+<section class="page-hero wrap">
+ <h1 class="page-title" data-split>Work<span class="dot">.</span></h1>
+ <p class="page-lede">{intro}</p>
+</section>
+<section class="wrap index" aria-label="All projects">
+ <div class="index-head" aria-hidden="true"><span>No.</span><span>Project</span><span>Area</span><span>When</span></div>
+ <ol class="index-list">{projects.map((project, n) => <ProjectRow project={project} index={n} />)}</ol>
+ <div class="preview" aria-hidden="true">{projects.map(p => <div class="preview-item" data-preview-for={p.slug}><Diagram kind={p.slug} /></div>)}</div>
+</section>
+<section class="wrap gallery" aria-label="Project diagrams">
+ <h2 class="gallery-title">Here are the diagrams from every project, side by side.</h2>
+ <div class="gallery-grid">{projects.map((p, n) => <a class="gallery-item" href={`/projects/${p.slug}`} data-reveal style={`--d:${(n % 2) * 90}ms`} data-cursor="read"><Diagram kind={p.slug} label={p.caption} /><span class="gallery-cap"><b>{p.name}</b>{p.caption}</span></a>)}</div>
+</section>
+</Base>
