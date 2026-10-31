@@ -1,7 +1,7 @@
 ---
 layout: "../../layouts/Article.astro"
-title: "EEG research · Aaditya Adhikari"
-description: "EEG preprocessing, feature extraction, and classifier comparison, with subject-level evaluation and explicit research limits."
+title: "EEG-Based Mental Health Research Using Deep Learning — Aaditya Adhikari"
+description: "EEG-based machine learning research by Aaditya Adhikari covering signal preprocessing, feature extraction, and classifier comparison with subject-level evaluation."
 project: "eeg"
 caption: "Conceptual signal illustration, not a patient recording. Filtering, feature extraction, and classifier comparison describe the research pipeline."
 ---

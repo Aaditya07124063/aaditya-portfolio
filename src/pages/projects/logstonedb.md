@@ -1,7 +1,7 @@
 ---
 layout: "../../layouts/Article.astro"
-title: "LogstoneDB · Aaditya Adhikari"
-description: "An early Go database project exploring Raft through deterministic simulation before a complete replicated key-value system."
+title: "LogstoneDB — Distributed Database in Go — Aaditya Adhikari"
+description: "LogstoneDB is Aaditya Adhikari’s Go database research project exploring Raft, deterministic simulation, replicated state, and distributed-system failure testing."
 project: "logstonedb"
 caption: "Illustrative three-node target. The current project starts with deterministic simulation."
 ---

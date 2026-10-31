@@ -1,7 +1,7 @@
 ---
 layout: "../../layouts/Article.astro"
-title: "Trading Lab · Aaditya Adhikari"
-description: "A research workbench examining trading signals, execution assumptions, benchmark comparisons, and reproducibility."
+title: "Trading Lab — Quantitative Finance Research Platform — Aaditya Adhikari"
+description: "Trading Lab is Aaditya Adhikari’s quantitative finance research platform for testing trading signals, execution assumptions, benchmarks, costs, and reproducibility."
 project: "trading-lab"
 caption: "A conceptual research notebook, not a performance chart. Signals, execution, and reporting are separate stages."
 ---

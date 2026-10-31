@@ -9,11 +9,11 @@ Editorial specification. Metadata below is proposed copy, not configured website
 | `/` | Aaditya Adhikari · Software and research | Software and applied research by Aaditya Adhikari, including offline communication, quantitative evaluation, and biomedical machine learning. |
 | `/about` | About · Aaditya Adhikari | Aaditya's interests, research experience, and approach to software systems and machine-learning evaluation. |
 | `/projects` | Work · Aaditya Adhikari | Explore the methods, decisions, and limitations behind Aaditya Adhikari's software projects and research studies. |
-| `/projects/resqnet` | ResQNet · Aaditya Adhikari | A case study of a documented emergency communication prototype, covering nearby-device relay, local messaging, and remaining reliability limits. |
-| `/projects/trading-lab` | Trading Lab · Aaditya Adhikari | A research workbench examining trading signals, execution assumptions, benchmark comparisons, and reproducibility. |
-| `/projects/pancreatic-ct` | Pancreatic CT research · Aaditya Adhikari | A research case study on duplicate auditing, patient-group evaluation, and interpreting medical-imaging benchmark results. |
-| `/projects/eeg` | EEG research · Aaditya Adhikari | EEG preprocessing, feature extraction, and classifier comparison, with subject-level evaluation and explicit research limits. |
-| `/projects/logstonedb` | LogstoneDB · Aaditya Adhikari | An early Go database project exploring Raft through deterministic simulation before a complete replicated key-value system. |
+| `/projects/resqnet` | ResQNet — AI-Powered Offline Emergency Communication System — Aaditya Adhikari | ResQNet is an AI-powered offline emergency communication system by Aaditya Adhikari, exploring SOS messaging and nearby-device communication without relying on the internet. |
+| `/projects/trading-lab` | Trading Lab — Quantitative Finance Research Platform — Aaditya Adhikari | Trading Lab is Aaditya Adhikari’s quantitative finance research platform for testing trading signals, execution assumptions, benchmarks, costs, and reproducibility. |
+| `/projects/pancreatic-ct` | Pancreatic Tumor Classification Using CT Images — Aaditya Adhikari | Research by Aaditya Adhikari on pancreatic tumor classification using CT images, with emphasis on duplicate auditing, patient-level evaluation, and data leakage. |
+| `/projects/eeg` | EEG-Based Mental Health Research Using Deep Learning — Aaditya Adhikari | EEG-based machine learning research by Aaditya Adhikari covering signal preprocessing, feature extraction, and classifier comparison with subject-level evaluation. |
+| `/projects/logstonedb` | LogstoneDB — Distributed Database in Go — Aaditya Adhikari | LogstoneDB is Aaditya Adhikari’s Go database research project exploring Raft, deterministic simulation, replicated state, and distributed-system failure testing. |
 | `/writing` | Writing · Aaditya Adhikari | Technical notes on software systems, experiments, and evaluation. |
 | `/contact` | Contact · Aaditya Adhikari | Find Aaditya Adhikari's public GitHub profile and contact links. |
 | Unmatched route | Page not found · Aaditya Adhikari | This page could not be found. Browse the projects or return to the homepage. |

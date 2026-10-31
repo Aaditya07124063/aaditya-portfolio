@@ -1,7 +1,7 @@
 ---
 layout: "../../layouts/Article.astro"
-title: "Pancreatic CT research · Aaditya Adhikari"
-description: "A research case study on duplicate auditing, patient-group evaluation, and interpreting medical-imaging benchmark results."
+title: "Pancreatic Tumor Classification Using CT Images — Aaditya Adhikari"
+description: "Research by Aaditya Adhikari on pancreatic tumor classification using CT images, with emphasis on duplicate auditing, patient-level evaluation, and data leakage."
 project: "pancreatic-ct"
 caption: "Illustrative patient grouping. All slices from a patient stay in a single evaluation partition."
 ---

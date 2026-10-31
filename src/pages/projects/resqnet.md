@@ -1,7 +1,7 @@
 ---
 layout: "../../layouts/Article.astro"
-title: "ResQNet · Aaditya Adhikari"
-description: "A case study of a documented emergency communication prototype, covering nearby-device relay, local messaging, and remaining reliability limits."
+title: "ResQNet — AI-Powered Offline Emergency Communication System — Aaditya Adhikari"
+description: "ResQNet is an AI-powered offline emergency communication system by Aaditya Adhikari, exploring SOS messaging and nearby-device communication without relying on the internet."
 project: "resqnet"
 caption: "Illustrative relay path between connected devices. No measured range or delivery reliability is implied."
 ---
