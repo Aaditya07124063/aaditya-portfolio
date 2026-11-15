@@ -14,7 +14,7 @@ These are the software projects and research studies I have worked on. Each page
 
 A travel marketplace for Nepal built as a monorepo of four Next.js apps, an API and shared packages. Providers list hotels, buses, flights, trains, cars and guided tours, and travellers book them.
 
-Full-stack platform · Multi-app monorepo
+Live product · Full-stack platform
 
 [Read the Orbyatravels case study](/projects/orbyatravels)
 
