@@ -8,7 +8,7 @@ caption: "Simplified system map. Four Next.js apps and an API share typed packag
 
 # Orbyatravels
 
-A travel marketplace for Nepal, built as a monorepo of four web apps, an API and shared packages.
+A travel marketplace for Nepal, built as a monorepo of four web apps, an API and shared packages. It is live at [orbyatravel.com](https://orbyatravel.com), and I developed it.
 
 Independent businesses list what they sell. Travellers discover places, get an AI-built itinerary and book. The source code is private, so this page describes the design and leaves out anything confidential.
 

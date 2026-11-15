@@ -8,7 +8,7 @@ Route: `/projects/orbyatravels`. Source: the project's own `docs/` folder and pa
 
 # Orbyatravels
 
-A travel marketplace for Nepal, built as a monorepo of four web apps, an API and shared packages.
+A travel marketplace for Nepal, built as a monorepo of four web apps, an API and shared packages. It is live at [orbyatravel.com](https://orbyatravel.com), and I developed it.
 
 Independent businesses list what they sell. Travellers discover places, get an AI-built itinerary and book. The source code is private, so this page describes the design and leaves out anything confidential.
 
@@ -59,4 +59,4 @@ There are no traffic, revenue or performance numbers here, because I have none t
 
 ## Publication notes
 
-Repository `Aaditya07124063/orbyatravels` is private: no GitHub link. Do not publish credentials, `.env` values, host names other than the public site, or the audit and legal docs. Confirm the live status of the site and Aaditya's exact role before launch.
+Repository `Aaditya07124063/orbyatravels` is private: no GitHub link. Do not publish credentials, `.env` values, host names other than the public site, or the audit and legal docs. The site is live on Hostinger and is not deployed from this portfolio. Role is stated as developer only. Add "founder" only if Aaditya confirms it: the source also names other contributors.
