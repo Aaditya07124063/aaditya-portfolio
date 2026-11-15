@@ -8,7 +8,7 @@ import {icon, draw, tint, flow, label} from '../sketch';
 const bubble = 'M214 300c-6-42 40-74 104-76 66-2 116 26 112 74-4 46-52 74-112 72-60-2-100-28-104-70z';
 const blob = (x: number, y: number, r: number) => `M${x - r} ${y}c0-${r * .6} ${r * .4}-${r} ${r}-${r}s${r * 1.04} ${r * .5} ${r} ${r}-${r * .5} ${r * .96}-${r} ${r}-${r}-${r * .44}-${r}-${r}z`;
 const intro = home.split('# Aaditya Adhikari\n\n')[1].split('\n\n')[0];
-const mini: Record<string, string> = {resqnet:'phone', 'trading-lab':'chart', 'pancreatic-ct':'scan', eeg:'wave', logstonedb:'db'};
+const mini: Record<string, string> = {orbyatravels:'server', resqnet:'phone', 'trading-lab':'chart', 'pancreatic-ct':'scan', eeg:'wave', logstonedb:'db'};
 const deva = ['०१','०२','०३','०४','०५','०६','०७','०८'];
 const mapCore = [
  tint(bubble, 'hot'), draw(bubble),
@@ -78,7 +78,7 @@ const squiggle = '<svg class="draw" viewBox="0 0 120 12" preserveAspectRatio="no
  <div class="wrap section-head split-head">
   <p class="eyebrow"><span class="deva">{deva[1]}</span></p>
   <h2 id="work-h" data-split>Selected work</h2>
-  <p class="section-note">These are five projects I have built or researched. Each one has a full write-up that explains how it works and what is still unfinished.</p>
+  <p class="section-note">These are six projects I have built or researched. Each one has a full write-up that explains how it works and what is still unfinished.</p>
  </div>
  <div class="stack wrap">
   {projects.map((p, n) => <article class={`card card-${n}`} style={`--n:${n}`}>
@@ -89,6 +89,7 @@ const squiggle = '<svg class="draw" viewBox="0 0 120 12" preserveAspectRatio="no
      <p class="card-q">{p.question}</p>
      <p class="card-sum">{p.summary}</p>
      <ul class="tags">{p.stack.map(s => <li>{s}</li>)}</ul>
+     {p.href && <a class="pill" href={p.href} target="_blank" rel="noopener noreferrer" data-cursor="visit">Visit orbyatravel.com <span aria-hidden="true">↗</span></a>}
      <a class="link-u" href={`/projects/${p.slug}`}>Read the full {p.slug === 'logstonedb' ? 'project note' : 'case study'}</a>
     </div>
     <div class="card-art"><span class="card-note hand" aria-hidden="true">how it works</span><Diagram kind={p.slug} label={p.caption} /><p class="cap">{p.caption}</p></div>

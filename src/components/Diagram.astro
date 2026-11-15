@@ -6,6 +6,18 @@ const slices = (x: number, y: number, who: string) => [...who].map((c, n) => {
  return (c === 'a' ? tint(d) : `<path class="hatch" d="${d}"/>`) + draw(d);
 }).join('');
 const art: Record<string, string> = {
+orbyatravels: [
+ ...['web','provider','staff','admin'].map((a, n) => (n === 0 ? tint(box(15 + n * 150, 20, 120, 46)) : '') + draw(box(15 + n * 150, 20, 120, 46)) + label(75 + n * 150, 49, a, 'mono')),
+ label(300, 12, 'four Next.js apps', '', 'middle'),
+ ...[0, 1, 2, 3].map(n => flow(`M${75 + n * 150} 70c0 14 0 26 0 38`)),
+ tint(box(15, 112, 570, 56)), draw(box(15, 112, 570, 56)),
+ label(300, 136, 'shared packages', 'strong'), label(300, 156, 'ui · types · payments · crm · referrals · db', 'mono'),
+ flow('M120 172c0 22 0 38 0 54'), flow('M300 172c0 22 0 38 0 54'), flow('M480 172c0 22 0 38 0 54'),
+ icon('db', 96, 232, 1.5), label(120, 316, 'PostgreSQL', 'mono'),
+ icon('server', 276, 232, 1.5), label(300, 316, 'Hono API', 'mono'), label(300, 340, 'BullMQ · Redis', 'mono'),
+ label(480, 250, 'LLM provider', 'hot'), label(480, 272, 'failover chain', 'hot'), label(480, 316, 'AI trip planner', 'mono'),
+ draw(box(420, 224, 120, 62), 'hot-ink')
+].join(''),
 resqnet: [
  icon('towerOff', 256, 6, 1.35),
  label(288, 92, 'no tower, no server'),
