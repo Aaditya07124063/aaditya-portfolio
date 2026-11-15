@@ -14,6 +14,14 @@ I work on software systems and applied machine learning. So far I have built an 
 
 ## Selected work
 
+### Orbyatravels
+
+A full-stack travel marketplace for Nepal: a traveller site, provider, staff and admin portals, an API, and an AI trip planner grounded in real listings.
+
+Full-stack platform · Multi-app monorepo
+
+[Read the Orbyatravels case study](/projects/orbyatravels)
+
 ### ResQNet
 
 An Android prototype that passes SOS messages between nearby phones when there's no internet, along with the problems that remain.

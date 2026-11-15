@@ -7,6 +7,7 @@ export function publicCopy(file: string) {
 }
 export const home = publicCopy('pages/home');
 export const projects = [
+ {slug:'orbyatravels',name:'Orbyatravels',status:'Full-stack platform · Multi-app monorepo',when:'2026',stack:['Next.js','TypeScript','Hono','PostgreSQL','Prisma','Redis','Docker'],question:'How do you run a travel marketplace where hotels, buses, flights and guides each need their own portal?',summary:home.split('### Orbyatravels\n\n')[1].split('\n\n')[0],caption:'Simplified system map. Four Next.js apps and an API share typed packages and one PostgreSQL database. Not a deployment diagram.',href:'https://orbyatravel.com'},
  {slug:'resqnet',name:'ResQNet',status:'Prototype · Mobile systems',when:'Ongoing',stack:['Flutter','Dart','Nearby Connections','Firebase'],question:'What can an emergency app still do when the network is gone?',summary:home.split('### ResQNet\n\n')[1].split('\n\n')[0],caption:'Illustrative relay path between connected devices. No measured range or delivery reliability is implied.'},
  {slug:'trading-lab',name:'Trading Lab',status:'Active research · Data and evaluation',when:'2026',stack:['Python','pandas','FastAPI'],question:'Does a trading rule still beat holding once fills wait for the next open and every trade pays a cost?',summary:home.split('### Trading Lab\n\n')[1].split('\n\n')[0],caption:'Conceptual research notebook. This drawing represents the evaluation process, not measured returns.'},
  {slug:'pancreatic-ct',name:'Pancreatic CT research',status:'Research · Computer vision',when:'Research',stack:['TensorFlow','Keras','ResNet-50','Swin'],question:'How much of a high accuracy score comes from the model, and how much from the split?',summary:home.split('### Pancreatic CT research\n\n')[1].split('\n\n')[0],caption:'Illustrative patient grouping. All slices from one person stay in a single evaluation partition.'},
@@ -16,7 +17,7 @@ export const projects = [
 export const skills = [
  {group:'Languages',items:['Python','Dart','Go','TypeScript','JavaScript','C++','C','Java']},
  {group:'Machine learning',items:['TensorFlow','Keras','PyTorch','NumPy','SciPy','pandas','MNE-Python']},
- {group:'Systems and backend',items:['Node.js','Express','FastAPI','PostgreSQL','Docker','Nginx','Raft']},
+ {group:'Systems and backend',items:['Node.js','Express','Hono','Prisma','Redis','FastAPI','PostgreSQL','Docker','Nginx','Raft']},
  {group:'Mobile and web',items:['Flutter','React Native','React','Next.js','GSAP','Three.js','Lenis']},
  {group:'Daily tools',items:['Git','GitHub','Jupyter Lab','VS Code','Firebase CLI']}
 ];

@@ -3,7 +3,7 @@ import {join} from 'node:path';
 import assert from 'node:assert/strict';
 const pages=[];
 function walk(dir){for(const item of readdirSync(dir,{withFileTypes:true})){const path=join(dir,item.name);if(item.isDirectory())walk(path);else if(path.endsWith('.html'))pages.push(path)}}walk('dist');
-assert.equal(pages.length,11,'Expected eleven built pages');
+assert.equal(pages.length,12,'Expected twelve built pages');
 for(const file of pages){
  const html=readFileSync(file,'utf8');
  assert.equal((html.match(/<h1(?:\s|>)/g)||[]).length,1,`${file}: one h1`);

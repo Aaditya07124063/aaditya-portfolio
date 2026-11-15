@@ -10,6 +10,14 @@ Route: `/projects`. Use the listed order. Each entry links to its own page.
 
 These are the software projects and research studies I have worked on. Each page explains what I built, the choices I made, and what is still unfinished.
 
+## Orbyatravels
+
+A travel marketplace for Nepal built as a monorepo of four Next.js apps, an API and shared packages. Providers list hotels, buses, flights, trains, cars and guided tours, and travellers book them.
+
+Full-stack platform · Multi-app monorepo
+
+[Read the Orbyatravels case study](/projects/orbyatravels)
+
 ## ResQNet
 
 Emergency messaging between nearby phones. The Android prototype passes SOS messages directly between devices and relays them onward. Later project records describe a separate backend direction.

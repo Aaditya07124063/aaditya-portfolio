@@ -16,7 +16,7 @@ const toc = headings.filter((h: {depth: number}) => h.depth === 2);
 <div class:list={['article-shell','wrap', { 'case-study': project }]}>
  {project && <header class="case-head">
   <a class="back-link" href="/projects" data-cursor="back"><span aria-hidden="true">←</span> All projects</a>
-  <div class="case-meta"><span class="deva">{['०१','०२','०३','०४','०५'][at]}</span><span>{project.status}</span><span>{project.when}</span><ul class="tags">{project.stack.map((s: string) => <li>{s}</li>)}</ul></div>
+  <div class="case-meta"><span class="deva">{['०१','०२','०३','०४','०५','०६'][at]}</span><span>{project.status}</span><span>{project.when}</span><ul class="tags">{project.stack.map((s: string) => <li>{s}</li>)}</ul>{project.href && <a class="pill" href={project.href} target="_blank" rel="noopener noreferrer" data-cursor="visit">Visit orbyatravel.com <span aria-hidden="true">↗</span></a>}</div>
  </header>}
  {project && <aside class="case-aside">
   <Diagram kind={project.slug} label={project.caption} />
