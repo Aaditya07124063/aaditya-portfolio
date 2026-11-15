@@ -18,7 +18,7 @@ I work on software systems and applied machine learning. So far I have built an 
 
 A full-stack travel marketplace for Nepal: a traveller site, provider, staff and admin portals, an API, and an AI trip planner grounded in real listings.
 
-Full-stack platform · Multi-app monorepo
+Live product · Full-stack platform
 
 [Read the Orbyatravels case study](/projects/orbyatravels)
 
